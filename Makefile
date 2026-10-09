@@ -4,6 +4,10 @@ DOCKER_COMP = docker compose
 # The dev image runs as a user with the host uid/gid (see Dockerfile, frankenphp_dev stage)
 BUILD_ARGS = UID=$(shell id -u) GID=$(shell id -g)
 
+# Per-project image names (compose.override.yaml: ${IMAGES_PREFIX}app-php-dev), so projects
+# created from the same template don't overwrite each other's image; override: make build IMAGES_PREFIX=...
+export IMAGES_PREFIX ?= $(shell basename "$(CURDIR)" | tr '[:upper:]' '[:lower:]')-
+
 # Docker containers
 PHP_CONT = $(DOCKER_COMP) exec php
 
