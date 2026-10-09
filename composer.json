@@ -19,7 +19,6 @@
         "symfony/flex": "^2",
         "symfony/framework-bundle": "8.1.*",
         "symfony/intl": "8.1.*",
-        "symfony/mailer": "8.1.*",
         "symfony/monolog-bundle": "^3.0|^4.1",
         "symfony/runtime": "8.1.*",
         "symfony/translation": "8.1.*",
