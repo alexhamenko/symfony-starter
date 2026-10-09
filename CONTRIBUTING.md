@@ -27,24 +27,23 @@
 
 | Тип | Коли | Приклад |
 | --- | --- | --- |
-| `feat` | нова функціональність, помітна користувачу або клієнту API | `feat(content): add FAQ page` |
-| `fix` | виправлення помилки або невірної конфігурації | `fix(routing): redirect / to /ua/ with 301` |
-| `refactor` | зміна коду без зміни поведінки | `refactor(content): extract translation fallback to trait` |
-| `perf` | оптимізація без зміни поведінки | `perf(content): fetch translations in one query` |
-| `test` | лише тести | `test(content): cover PageRepository::findPublishedBySlug` |
+| `feat` | нова функціональність, помітна користувачу або клієнту API | `feat(blog): add archive page` |
+| `fix` | виправлення помилки або невірної конфігурації | `fix(routing): return 404 for unknown slug` |
+| `refactor` | зміна коду без зміни поведінки | `refactor(blog): extract slug generation to service` |
+| `perf` | оптимізація без зміни поведінки | `perf(blog): fetch comments in one query` |
+| `test` | лише тести | `test(blog): cover ArticleRepository::findPublishedBySlug` |
 | `docs` | лише документація (`*.md`, docblocks) | `docs: add commit conventions` |
 | `style` | форматування без зміни логіки (результат `make fix`) | `style: apply php-cs-fixer @Symfony ruleset` |
 | `build` | Dockerfile, compose, Makefile, збірка статики | `build(docker): pin PostgreSQL 16` |
 | `ci` | GitHub Actions, Dependabot | `ci: run make qa on pull requests` |
 | `chore` | рутина: залежності, конфіги інструментів, `.gitignore` | `chore(deps): install symfony/orm-pack` |
-| `revert` | відкат коміту | `revert: feat(content): add FAQ page` |
-| `ui` | **власний тип проєкту**: шаблони, UI-kit і стилі, згенеровані AI | `ui(home): add Testimonials section markup` |
+| `revert` | відкат коміту | `revert: feat(blog): add archive page` |
+| `ui` | **власний тип шаблону**: шаблони, UI-kit і стилі, згенеровані AI | `ui(home): add hero section markup` |
 
 ### Scope
 
-- **Модулі:** `shared`, `identity`, `content`, `catalog`, `teaching`, `scheduling`, `group-classes`,
-  `billing`, `learning`, `vocabulary`, `assessment`, `leads`, `notification`
-- **Інфраструктура:** `deps`, `deps-dev`, `docker`, `ci`, `qa`, `db`, `i18n`, `routing`, `admin`, `security`
+- **Модулі / області застосунку:** визначаються в кожному проєкті (наприклад, `blog`, `user`)
+- **Інфраструктура:** `deps`, `deps-dev`, `docker`, `ci`, `qa`, `db`, `routing`
 - **UI:** `home`, `layout`, `ui-kit`, `theme`
 
 Список не закритий: нова область додається сюди разом із першим комітом, що її використовує.
@@ -101,10 +100,9 @@ fix(docker): align PostgreSQL serverVersion with database image
 **Нова сутність і міграція** - разом, бо міграція без сутності не має сенсу:
 
 ```text
-feat(content): add Page entity with translations
+feat(blog): add Article entity
 
-Page holds locale-independent fields, PageTranslation holds texts
-per locale with a unique (page_id, locale) index.
+Slug is unique and generated from the title on creation.
 ```
 
 **Налаштування інструменту якості:**
@@ -116,16 +114,16 @@ chore(qa): configure PHPStan at level max
 **Згенерована верстка** - завжди окремо від PHP-коду компонента:
 
 ```text
-feat(content): add Testimonials component data
-ui(home): add Testimonials section markup
+feat(home): add featured articles to homepage
+ui(home): add featured articles section markup
 ```
 
-**Breaking change** (актуально з API кабінету, етап 4):
+**Breaking change** (зміна публічного API):
 
 ```text
-feat(api)!: rename /lessons endpoint to /bookings
+feat(api)!: rename /posts endpoint to /articles
 
-BREAKING CHANGE: clients must switch to /api/bookings.
+BREAKING CHANGE: clients must switch to /api/articles.
 ```
 
 ### Перед комітом
