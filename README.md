@@ -34,7 +34,7 @@ make up      # start containers and wait until they are healthy
 make css     # in a separate terminal: rebuild Tailwind CSS on template changes
 ```
 
-Відкрийте `https://localhost` і прийміть локальний TLS-сертифікат (або додайте кореневий сертифікат Caddy в довірені, див. [docs/symfony-docker/tls.md](docs/symfony-docker/tls.md)). Сторінка `https://localhost/_dev/styleguide` (лише dev) показує тему.
+Відкрийте `https://localhost` і прийміть локальний TLS-сертифікат (або додайте кореневий сертифікат Caddy в довірені, див. [docs/symfony-docker/tls.md](docs/symfony-docker/tls.md)).
 
 Зупинка: `make down`.
 
