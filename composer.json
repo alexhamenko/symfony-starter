@@ -1,8 +1,8 @@
 {
-    "name": "olorin/lingua-school",
+    "name": "olorin/symfony-starter",
     "type": "project",
     "license": "MIT",
-    "description": "LinguaSchool: online English school platform on Symfony 8",
+    "description": "Symfony 8 starter template: FrankenPHP, PostgreSQL, Doctrine, Twig, AssetMapper + Tailwind/daisyUI, QA tooling and CI",
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
