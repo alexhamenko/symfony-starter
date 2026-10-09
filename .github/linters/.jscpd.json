@@ -1,0 +1,14 @@
+{
+    "threshold": 0,
+    "reporters": ["consoleFull"],
+    "ignore": [
+        "**/__snapshots__/**",
+        "**/node_modules/**",
+        "**/config/reference.php",
+        "**/tailwind/plugins/**",
+        "**/tests/object-manager.php",
+        "**/tests/console-application.php"
+    ],
+    "absolute": true,
+    "gitignore": true
+}

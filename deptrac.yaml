@@ -1,0 +1,24 @@
+# Module boundaries of the modular monolith (see PROJECT_CONTEXT.md, "Архітектура").
+# One layer per module in src/<Module>/; add a module here together with its directory.
+# Domain/Application/Infrastructure/UI layers of complex modules go to deptrac.layers.yaml.
+deptrac:
+    paths:
+        - ./src
+    layers:
+        -
+            name: Shared
+            collectors:
+                -
+                    type: directory
+                    value: src/Shared/.*
+        -
+            name: Content
+            collectors:
+                -
+                    type: directory
+                    value: src/Content/.*
+    ruleset:
+        # Shared depends on nothing; every module may depend on Shared
+        Shared: ~
+        Content:
+            - Shared
