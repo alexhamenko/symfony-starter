@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Styleguide{% endblock %}
+
+{% block body %}
+    <main class="mx-auto max-w-5xl space-y-12 px-4 py-8">
+        <header class="space-y-2">
+            <h1 class="text-3xl font-bold">Styleguide</h1>
+            <p class="text-base-content/70">
+                Dev-only page: theme colors, typography and daisyUI components. Run <code>make css</code> to see new classes.
+            </p>
+        </header>
+
+        <section class="space-y-4" aria-labelledby="sg-colors">
+            <h2 id="sg-colors" class="text-2xl font-semibold">Colors</h2>
+            <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                <div class="rounded-box bg-primary p-4 text-primary-content">primary</div>
+                <div class="rounded-box bg-secondary p-4 text-secondary-content">secondary</div>
+                <div class="rounded-box bg-accent p-4 text-accent-content">accent</div>
+                <div class="rounded-box bg-neutral p-4 text-neutral-content">neutral</div>
+                <div class="rounded-box bg-base-100 p-4 text-base-content ring-1 ring-base-300">base-100</div>
+                <div class="rounded-box bg-base-200 p-4 text-base-content">base-200</div>
+                <div class="rounded-box bg-base-300 p-4 text-base-content">base-300</div>
+                <div class="rounded-box bg-info p-4 text-info-content">info</div>
+                <div class="rounded-box bg-success p-4 text-success-content">success</div>
+                <div class="rounded-box bg-warning p-4 text-warning-content">warning</div>
+                <div class="rounded-box bg-error p-4 text-error-content">error</div>
+            </div>
+        </section>
+
+        <section class="space-y-4" aria-labelledby="sg-typography">
+            <h2 id="sg-typography" class="text-2xl font-semibold">Typography</h2>
+            <p class="text-4xl font-bold">Англійська онлайн з викладачем</p>
+            <p class="text-2xl font-semibold">Heading 2 / Заголовок другого рівня</p>
+            <p class="text-xl">Heading 3 / Заголовок третього рівня</p>
+            <p>Body text: швидка руда лисиця перестрибує через ледачого пса. The quick brown fox jumps over the lazy dog.</p>
+            <p class="text-sm text-base-content/70">Small muted text</p>
+            <p><a href="#" class="link link-primary">Link</a></p>
+        </section>
+
+        <section class="space-y-4" aria-labelledby="sg-buttons">
+            <h2 id="sg-buttons" class="text-2xl font-semibold">Buttons and badges</h2>
+            <div class="flex flex-wrap gap-2">
+                <button type="button" class="btn btn-primary">Primary</button>
+                <button type="button" class="btn btn-secondary">Secondary</button>
+                <button type="button" class="btn btn-accent">Accent</button>
+                <button type="button" class="btn btn-outline btn-primary">Outline</button>
+                <button type="button" class="btn btn-ghost">Ghost</button>
+                <button type="button" class="btn btn-primary" disabled>Disabled</button>
+            </div>
+            <div class="flex flex-wrap gap-2">
+                <span class="badge badge-primary">A1</span>
+                <span class="badge badge-secondary">B2</span>
+                <span class="badge badge-outline">C1</span>
+            </div>
+        </section>
+
+        <section class="space-y-4" aria-labelledby="sg-cards">
+            <h2 id="sg-cards" class="text-2xl font-semibold">Cards and alerts</h2>
+            <div class="grid gap-4 sm:grid-cols-2">
+                <article class="card bg-base-200">
+                    <div class="card-body">
+                        <h3 class="card-title">Card title</h3>
+                        <p>Card body text.</p>
+                        <div class="card-actions justify-end">
+                            <button type="button" class="btn btn-primary btn-sm">Action</button>
+                        </div>
+                    </div>
+                </article>
+                <div class="space-y-2">
+                    <div role="alert" class="alert alert-success">Success alert</div>
+                    <div role="alert" class="alert alert-warning">Warning alert</div>
+                    <div role="alert" class="alert alert-error">Error alert</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-4" aria-labelledby="sg-forms">
+            <h2 id="sg-forms" class="text-2xl font-semibold">Form controls</h2>
+            <form class="grid max-w-md gap-3" action="#" method="get">
+                <label class="floating-label">
+                    <span>Name</span>
+                    <input type="text" class="input w-full" placeholder="Name" name="name">
+                </label>
+                <select class="select w-full" name="level" aria-label="Level">
+                    <option>A1</option>
+                    <option>B1</option>
+                    <option>C1</option>
+                </select>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" class="checkbox checkbox-primary" name="agree">
+                    <span>I agree</span>
+                </label>
+            </form>
+        </section>
+
+        <section class="space-y-4" aria-labelledby="sg-nojs">
+            <h2 id="sg-nojs" class="text-2xl font-semibold">No-JS patterns</h2>
+            <details class="collapse collapse-arrow bg-base-200">
+                <summary class="collapse-title font-semibold">FAQ item (details/summary)</summary>
+                <div class="collapse-content">Answer, opens without JavaScript.</div>
+            </details>
+            <div class="carousel carousel-start w-full gap-4" data-island="Carousel" data-props="{{ {}|json_encode|e('html_attr') }}">
+                {% for i in 1..5 %}
+                    <div class="carousel-item w-64">
+                        <div class="card w-full bg-base-200">
+                            <div class="card-body">Slide {{ i }} (CSS scroll-snap)</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+{% endblock %}

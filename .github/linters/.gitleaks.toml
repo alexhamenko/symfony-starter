@@ -1,0 +1,7 @@
+# gitleaks config for super-linter: default rules plus project allowlist
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Dev-only defaults committed on purpose by Symfony recipes (real secrets live in .env.local or the vault)"
+paths = ['''(^|/)\.env\.dev$''']

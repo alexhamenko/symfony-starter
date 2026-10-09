@@ -1,0 +1,17 @@
+---
+# super-linter's default markdownlint rules (lib/.automation/.markdown-lint.yml),
+# with one change: no line length limit.
+# Rules doc: https://github.com/DavidAnson/markdownlint
+
+MD004: false # Unordered list style
+MD007:
+    indent: 2 # Unordered list indentation
+# Prose paragraphs in the docs are long single lines on purpose
+MD013: false
+MD026:
+    punctuation: ".,;:!。，；:" # List of not allowed
+MD029: false # Ordered list item prefix
+MD033: false # Allow inline HTML
+MD036: false # Emphasis used instead of a heading
+
+blank_lines: false # Error on blank lines

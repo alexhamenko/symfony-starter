@@ -1,0 +1,23 @@
+/* Tailwind v4: configuration lives in CSS, no tailwind.config.js */
+@import "tailwindcss" source(none);
+
+/* Scan only templates for class names (keeps the build fast and predictable) */
+@source "../../templates";
+
+/* daisyUI v5.7.47, standalone build for the Tailwind CLI (no Node), see tailwind/plugins/ */
+
+/* Light theme only: without this daisyUI also enables "dark" for prefers-color-scheme: dark (no brand colors there) */
+@plugin "../../tailwind/plugins/daisyui.mjs" {
+    themes: light --default;
+}
+
+/* Project theme: daisyUI "light" with the brand primary color */
+@plugin "../../tailwind/plugins/daisyui-theme.mjs" {
+    name: "light";
+    default: true;
+
+    --color-primary: #4fc87a;
+
+    /* Dark text on the light green keeps WCAG contrast (white text on #4fc87a does not) */
+    --color-primary-content: oklch(22% 0.05 150deg);
+}
