@@ -33,7 +33,7 @@ make css     # in a separate terminal: rebuild Tailwind CSS on template changes
 | `make css` | `tailwind:build --watch` |
 | `make db-reset` | Dev-БД з нуля: drop, create, migrate, фікстури |
 | `make test` | Тестова БД + PHPUnit; один suite: `make test c='--testsuite unit'` |
-| `make qa` | PHPStan (max), PHP-CS-Fixer, Rector, Deptrac, lint-перевірки, `doctrine:schema:validate` |
+| `make qa` | PHPStan (max), PHP-CS-Fixer, Rector, lint-перевірки, `doctrine:schema:validate` |
 | `make fix` | Rector, потім PHP-CS-Fixer |
 
 ## Як працювати

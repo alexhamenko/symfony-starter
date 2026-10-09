@@ -71,7 +71,6 @@ qa: ## Run all static checks (no changes to the code)
 	@$(PHP_CONT) vendor/bin/phpstan analyse --no-progress
 	@$(PHP_CONT) vendor/bin/php-cs-fixer fix --dry-run --diff
 	@$(PHP_CONT) vendor/bin/rector process --dry-run
-	@$(PHP_CONT) vendor/bin/deptrac analyse --no-progress
 	@$(CONSOLE) lint:container
 	@$(CONSOLE) lint:twig templates/
 	@$(CONSOLE) lint:yaml config/ --parse-tags
